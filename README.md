@@ -1,1 +1,1 @@
-# Blog-details
+# AuthBlog
