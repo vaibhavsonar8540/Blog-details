@@ -1,29 +1,14 @@
-// routes/blog.router.js
-const express = require("express");
-const blogController = require("../controller/blog.controller");
-const authorizeRoles = require("../middleware/rolemiddleware");
-const authmiddleware = require("../middleware/authmiddleware");
-const blogRouter = express.Router();
-
-blogRouter.post("/createpost", authmiddleware, blogController.create);
-blogRouter.get("/getpost", blogController.getBlog);
-blogRouter.get("/detail/:id", blogController.getblogById);
-blogRouter.get("/:id", blogController.getblogById);
-
-// routes/blog.router.js
-blogRouter.put(
-  "/update/:id",
-  authmiddleware,
-  authorizeRoles("admin", "user"),
-  blogController.updateblog
-);
+const express = require("express")
+const blogController = require("../controller/blog.controller")
+const blogRouter = express.Router()
 
 
-blogRouter.delete(
-  "/delete/:id",
-  authmiddleware,
-  authorizeRoles("admin", "user"),
-  blogController.deleteblog
-);
+blogRouter.get("/test", blogController.test)
+blogRouter.post("/createpost", blogController.create)
+blogRouter.get("/getpost", blogController.getBlog)
+blogRouter.put("/update/:id", blogController.updateblog)
+blogRouter.delete("/delete/:id", blogController.deleteblog)
+blogRouter.get("/detail/:id", blogController.getblogById)
+blogRouter.get("/:id", blogController.getblogById)
 
-module.exports = blogRouter;
+module.exports = blogRouter
